@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tengku Siwa - Tempat Wisata Manggarai Barat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #10b981;
+            border-radius: 2px;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+        .back-to-top.show {
+            opacity: 1;
+        }
+        .navbar {
+            transition: background 0.3s ease;
+        }
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.9);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar fixed top-0 left-0 w-full z-50 py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="text-white text-2xl font-bold">Tengku Siwa</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-white hover:text-green-300 transition">Beranda</a>
+                <a href="#about" class="text-white hover:text-green-300 transition">Tentang</a>
+                <a href="#gallery" class="text-white hover:text-green-300 transition">Galeri</a>
+                <a href="#facilities" class="text-white hover:text-green-300 transition">Fasilitas</a>
+                <a href="#testimonials" class="text-white hover:text-green-300 transition">Testimoni</a>
+                <a href="#contact" class="text-white hover:text-green-300 transition">Kontak</a>
+            </div>
+            <div class="md:hidden text-white">
+                <button id="mobile-menu-button" class="focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden bg-black bg-opacity-90 hidden">
+            <div class="px-4 py-2 space-y-4">
+                <a href="#home" class="block text-white hover:text-green-300 transition py-2">Beranda</a>
+                <a href="#about" class="block text-white hover:text-green-300 transition py-2">Tentang</a>
+                <a href="#gallery" class="block text-white hover:text-green-300 transition py-2">Galeri</a>
+                <a href="#facilities" class="block text-white hover:text-green-300 transition py-2">Fasilitas</a>
+                <a href="#testimonials" class="block text-white hover:text-green-300 transition py-2">Testimoni</a>
+                <a href="#contact" class="block text-white hover:text-green-300 transition py-2">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Tengku Siwa</h1>
+            <p class="text-xl md:text-2xl mb-8">Keindahan Alam Curug di Manggarai Barat</p>
+            <a href="#about" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-medium transition inline-block">Jelajahi Sekarang</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 section-title">Tentang Tengku Siwa</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <img src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" 
+                         alt="Tengku Siwa" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h3 class="text-2xl font-bold mb-4">Keindahan Alam yang Memukau</h3>
+                    <p class="mb-4">Tengku Siwa adalah destinasi wisata alam yang menakjubkan di Manggarai Barat, Nusa Tenggara Timur. Tempat ini menawarkan pemandangan curug (air terjun) yang eksotis dengan air jernih yang mengalir deras di antara bebatuan dan hutan hijau yang asri.</p>
+                    <p class="mb-4">Dengan suasana yang masih alami dan jauh dari keramaian kota, Tengku Siwa menjadi tempat yang sempurna untuk melepas penat, menikmati keindahan alam, dan berwisata bersama keluarga atau teman.</p>
+                    <p>Lokasi yang strategis dan mudah dijangkau membuat Tengku Siwa semakin populer di kalangan wisatawan lokal maupun mancanegara.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 section-title">Galeri Foto</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Tengku Siwa View" class="w-full h-64 object-cover">
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1973&q=80" 
+                         alt="Waterfall" class="w-full h-64 object-cover">
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Nature" class="w-full h-64 object-cover">
+                </div>
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
+                         alt="Forest" class="w-full h-64 object-cover">
+                </div>
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1464822759844-d150ae4d4dd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Mountain" class="w-full h-64 object-cover">
+                </div>
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="River" class="w-full h-64 object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 section-title">Fasilitas</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Facility 1 -->
+                <div class="text-center p-6 bg-white rounded-lg shadow-md">
+                    <div class="text-green-500 text-4xl mb-4">
+                        <i class="fas fa-parking"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Area Parkir Luas</h3>
+                    <p>Tersedia area parkir yang luas dan aman untuk kendaraan pengunjung.</p>
+                </div>
+                <!-- Facility 2 -->
+                <div class="text-center p-6 bg-white rounded-lg shadow-md">
+                    <div class="text-green-500 text-4xl mb-4">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Warung Makan</h3>
+                    <p>Berbagai pilihan makanan dan minuman khas lokal tersedia di warung sekitar.</p>
+                </div>
+                <!-- Facility 3 -->
+                <div class="text-center p-6 bg-white rounded-lg shadow-md">
+                    <div class="text-green-500 text-4xl mb-4">
+                        <i class="fas fa-restroom"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Toilet Bersih</h3>
+                    <p>Fasilitas toilet yang bersih dan terawat untuk kenyamanan pengunjung.</p>
+                </div>
+                <!-- Facility 4 -->
+                <div class="text-center p-6 bg-white rounded-lg shadow-md">
+                    <div class="text-green-500 text-4xl mb-4">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Spot Foto</h3>
+                    <p>Banyak spot foto menarik dengan pemandangan alam yang instagramable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 section-title">Testimoni Pengunjung</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Sari Wijaya</h4>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Pemandangan di Tengku Siwa sangat menakjubkan! Air terjunnya jernih dan segar. Cocok banget buat healing dari kepenatan kota."</p>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Budi Santoso</h4>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Perjalanan menuju lokasi cukup mudah. Fasilitasnya lengkap dan terjaga kebersihannya. Pasti akan kembali lagi bersama keluarga."</p>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Dewi Lestari</h4>
+                            <div class="text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"Spot fotonya banyak banget! Hasil jepretan di sini langsung jadi feed Instagram yang menarik. Suasana alamnya masih sangat alami."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 section-title">Kontak & Lokasi</h2>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Informasi Kontak</h3>
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-map-marker-alt text-green-500 mr-3"></i>
+                            <p>Desa Wae Lolos, Kecamatan Lembor, Manggarai Barat, NTT</p>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-phone text-green-500 mr-3"></i>
+                            <p>+62 812-3456-7890</p>
+                        </div>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-envelope text-green-500 mr-3"></i>
+                            <p>info@tengkusiwa.com</p>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock text-green-500 mr-3"></i>
+                            <p>Buka setiap hari: 08.00 - 18.00 WITA</p>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Sosial Media</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-green-500 hover:bg-green-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-green-500 hover:bg-green-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-green-500 hover:bg-green-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="bg-green-500 hover:bg-green-600 w-10 h-10 rounded-full flex items-center justify-center transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <h3 class="text-2xl font-bold mb-4">Peta Lokasi</h3>
+                    <div class="bg-gray-800 h-64 rounded-lg flex items-center justify-center">
+                        <p class="text-center">Peta interaktif akan ditampilkan di sini<br><span class="text-sm">(Gunakan Google Maps atau layanan peta lainnya)</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2023 Tengku Siwa - Tempat Wisata Manggarai Barat. All rights reserved.</p>
+            <p class="mt-2 text-gray-400">Designed with ❤️ for nature lovers</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div id="back-to-top" class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu after clicking a link
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
